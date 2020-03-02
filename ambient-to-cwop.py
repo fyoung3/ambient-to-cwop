@@ -14,8 +14,8 @@ from ambient_api.ambientapi import AmbientAPI
 
 ########### SITE INFO ###############
 callsign = 'DW3397' #Enter your CWOP Callsign
-latitude = 3221.10N #Enter Latitude - Lat must be listed in DECIMAL DEGREES (DD.DDDD). Number of digits doesn't really matter. Use positive values for N/E, negative for S/W. The program then converts to degrees decimal minutes (DD MM.MMMM), which is the format APRS requires.
-longitude = 08615.06W #Enter Longitude - Long must be listed in DECIMAL DEGREES (DD.DDDD). Number of digits doesn't really matter. Use positive values for N/E, negative for S/W. The program then converts to degrees decimal minutes (DD MM.MMMM), which is the format APRS requires.
+latitude = '3221.10N' #Enter Latitude - Lat must be listed in DECIMAL DEGREES (DD.DDDD). Number of digits doesn't really matter. Use positive values for N/E, negative for S/W. The program then converts to degrees decimal minutes (DD MM.MMMM), which is the format APRS requires.
+longitude = '08615.06W' #Enter Longitude - Long must be listed in DECIMAL DEGREES (DD.DDDD). Number of digits doesn't really matter. Use positive values for N/E, negative for S/W. The program then converts to degrees decimal minutes (DD MM.MMMM), which is the format APRS requires.
 devicename = 'WS2902A' #This identifies your equipment/software. You can put anything you want. Example: 'WS2902A'.
 #####################################
 

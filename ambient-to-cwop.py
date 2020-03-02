@@ -6,17 +6,17 @@ import math
 
 ############ API INFO ################
 os.environ["AMBIENT_ENDPOINT"] = 'https://api.ambientweather.net/v1'
-os.environ["AMBIENT_API_KEY"] = '###' #Enter your Ambient API Key
-os.environ["AMBIENT_APPLICATION_KEY"] = '###' #Enter your Ambient App Keu
+os.environ["AMBIENT_API_KEY"] = '1e2b5dd2df584741b22d523e2d5eecd4e16d9a890ce54dbda2f0140b3e6d3349' #Enter your Ambient API Key
+os.environ["AMBIENT_APPLICATION_KEY"] = 'e51c99e37b584eb7b6ae9eaebb15a7601c1c594724b74a0195ee2f73d8f1e159' #Enter your Ambient App Keu
 #####################################
 
 from ambient_api.ambientapi import AmbientAPI
 
 ########### SITE INFO ###############
-callsign = '###' #Enter your CWOP Callsign
-latitude = ##.#### #Enter Latitude - Lat must be listed in DECIMAL DEGREES (DD.DDDD). Number of digits doesn't really matter. Use positive values for N/E, negative for S/W. The program then converts to degrees decimal minutes (DD MM.MMMM), which is the format APRS requires.
-longitude = ##.#### #Enter Longitude - Long must be listed in DECIMAL DEGREES (DD.DDDD). Number of digits doesn't really matter. Use positive values for N/E, negative for S/W. The program then converts to degrees decimal minutes (DD MM.MMMM), which is the format APRS requires.
-devicename = '###' #This identifies your equipment/software. You can put anything you want. Example: 'WS2902A'.
+callsign = 'DW3397' #Enter your CWOP Callsign
+latitude = 3221.10N #Enter Latitude - Lat must be listed in DECIMAL DEGREES (DD.DDDD). Number of digits doesn't really matter. Use positive values for N/E, negative for S/W. The program then converts to degrees decimal minutes (DD MM.MMMM), which is the format APRS requires.
+longitude = 08615.06W #Enter Longitude - Long must be listed in DECIMAL DEGREES (DD.DDDD). Number of digits doesn't really matter. Use positive values for N/E, negative for S/W. The program then converts to degrees decimal minutes (DD MM.MMMM), which is the format APRS requires.
+devicename = 'WS2902A' #This identifies your equipment/software. You can put anything you want. Example: 'WS2902A'.
 #####################################
 
 api = AmbientAPI()
@@ -26,17 +26,18 @@ home = devices[0] #this assumes you have only one station. Increase number accor
 weather= home.last_data
 
 #convert coordinates to degrees decimal minutes
-if latitude < 0:
-    latitude = abs(latitude)
-    latitude = str(int(latitude)).zfill(2) + str(round(60*(latitude - int(latitude)),2)).zfill(2) + 'S'
-else:
-    latitude = str(int(latitude)).zfill(2) + str(round(60*(latitude - int(latitude)),2)).zfill(2) + 'N'
+## Commented out because long/lat already decimal
+#if latitude < 0:
+#    latitude = abs(latitude)
+#    latitude = str(int(latitude)).zfill(2) + str(round(60*(latitude - int(latitude)),2)).zfill(2) + 'S'
+#else:
+#    latitude = str(int(latitude)).zfill(2) + str(round(60*(latitude - int(latitude)),2)).zfill(2) + 'N'
 
-if longitude < 0:
-    longitude = abs(longitude)
-    longitude = str(int(longitude)).zfill(3) + str(round(60*(longitude - int(longitude)),2)).zfill(2) + 'W'
-else:
-    longitude = str(int(longitude)).zfill(3) + str(round(60*(longitude - int(longitude)),2)).zfill(2) + 'E'
+#if longitude < 0:
+#    longitude = abs(longitude)
+#    longitude = str(int(longitude)).zfill(3) + str(round(60*(longitude - int(longitude)),2)).zfill(2) + 'W'
+#else:
+#    longitude = str(int(longitude)).zfill(3) + str(round(60*(longitude - int(longitude)),2)).zfill(2) + 'E'
 
 winddir = str(weather.get('winddir')).zfill(3)
 windspeed = str(int(math.ceil(weather.get('windspeedmph')))).zfill(3)
@@ -101,3 +102,4 @@ s.send('user ' + callsign + ' pass -1 vers Python\n')
 s.send(packet+'\n')
 s.shutdown(0)
 s.close()
+

@@ -57,6 +57,7 @@ else:
 #rainnew = int(weather.get('dailyrainin')*100)
 #raincheck = rainnew - rainold
 #
+#
 #if raincheck <= 0:
 #	rainhour = str(rainold).zfill(3)
 #else:
